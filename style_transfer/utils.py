@@ -7,7 +7,10 @@ class Image(object):
 	"""wrapper of loading/showing image"""
 	def __init__(self, path='', pixel=None):
 		if bool(path):
-			self.img = cv2.imread(path)
+			img = cv2.imread(path)
+			b,g,r = cv2.split(img)
+			self.img = cv2.merge([r,g,b])
+
 		elif bool(pixel):
 			self.img = pixel
 
